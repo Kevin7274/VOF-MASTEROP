@@ -1,0 +1,341 @@
+{% extends 'base.html' %}
+
+{% block title %}productos{% endblock %}
+
+{% block content %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <header>
+      <div class="menu logo-nav">
+        <a href="{{ url_for('index')}}" class="logo">View Of King</a>
+        <label class="menu-icon"><span class="fas fa-bars icomin"></span></label>
+        <nav class="navigation">
+          <ul>
+            <li><a href="{{ url_for('nosotros')}}">Nosotros</a></li>
+            <li><a href="{{ url_for('productos')}}">Productos</a></li>
+            <li><a href="{{ url_for('contacto')}}">Contacto</a></li>
+            <li><a href="{{ url_for('login')}}">Login</a></li>
+            <li class="car"><a href="{{ url_for('carrito')}}" >
+              <svg class="bi bi-cart3" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+              </svg></a>
+            </li>
+            {% block submenu %}
+            <!-- contenido extra -->
+            {% endblock %}
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+
+<main>
+
+        <div class="modal" id="modal">
+          <div class="modal-content">
+            <img src="" alt="" class="modal-img" id="modal-img">
+          </div>
+          <div class="modal-boton" id="modal-boton">X</div>
+        </div>
+
+        <div class="container-productos" id="lista-productos">
+
+          {{% for productos in productos %}}
+
+          <div class="card">
+            <img src="{{ url_for('static', filename=' producto.imagen img/BAD.jpg') }}" class="card-img">
+            <p></p>
+            <h5>{{ producto.name }}Chaqueta BAD</h5>
+            <p>{{ producto.material }}Material: Gabardina</p>
+            <p>$<small class="precio">{{ producto.precio }}2500</small></p>
+            <p></p>
+            <a href="#" class="button agregar-carrito" data-id="1">{{ producto.href }}Comprar</a>
+          </div>
+
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/thriller.jpg') }}" class="card-img">
+            <p></p>
+            <h5>Chaqueta THRILLER</h5>
+            <p>Material: Cuero sintetico</p>
+            <p>$<small class="precio">1500</small></p>
+            <p></p>
+            <a href="#" class="button agregar-carrito" data-id="2">Comprar</a>
+          </div>
+
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/cte.jpg') }}" class="card-img">
+            <p></p>
+            <h5>Camisas CTE</h5>
+            <p>Material: Poliester</p>
+            <h>$<small class="precio">450</small></h>
+            <p></p>
+            <a href="#" class="button agregar-carrito" data-id="3">Comprar</a>
+          </div>
+
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/beat.jpg') }}" class="card-img">
+            <p></p>
+            <h5>Chaqueta BEAT IT</h5>
+            <p>Material: Piel</p>
+            <p>$<small class="precio">3000</small></p>
+            <p></p>
+            <a href="#" class="button agregar-carrito" data-id="4">Comprar</a>
+          </div>
+
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/beatit.jpg') }}" class="card-img">
+            <p></p>
+            <h5>Chaqueta BEAT IT (imitacion)</h5>
+            <p>Material: Charol</p>
+            <p>$<small class="precio">1500</small></p>
+            <p></p>
+            <a href="#" class="button agregar-carrito" data-id="5">Comprar</a>
+          </div>
+
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/thrillerh.jpg') }}" class="card-img">
+            <p></p>
+            <h5>Chaqueta THRILLER History Tour</h5>
+            <p>Material: Charol y Cuero Sintetico</p>
+            <p>$<small class="precio">1800</small></p>
+            <p></p>
+            <a href="#" class="button agregar-carrito" data-id="5">Comprar</a>
+          </div>
+
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/BTH.jpg') }}" class="card-img">
+            <p></p>
+            <h5>Chaqueta BEAT IT History Tour</h5>
+            <p>Material: Cuero Sintetico</p>
+            <p>$<small class="precio">2000</small></p>
+            <p></p>
+            <a href="#" class="button agregar-carrito" data-id="5">Comprar</a>
+          </div>
+
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/smooth.jpg') }}" class="card-img">
+            <p></p>
+            <h5>Saco SMOOTH CRIMINAL History Tour</h5>
+            <p>Material: Casimir Español</p>
+            <p>$<small class="precio">1800</small></p>
+            <p></p>
+            <a href="#" class="button agregar-carrito" data-id="5">Comprar</a>
+          </div>
+
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/history.jpg') }}" class="card-img">
+            <p></p>
+            <h5>Traje HISTORY TOUR</h5>
+            <p>Material: Licra Metalica</p>
+            <p>$<small class="precio">1200</small></p>
+            <p></p>
+            <a href="#" class="button agregar-carrito" data-id="5">Comprar</a>
+          </div>
+
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/another.jpg') }}" class="card-img">
+            <p></p>
+            <h5>Traje BAD TOUR</h5>
+            <p>Material: Licra Metalica </p>
+            <p>$<small class="precio">700</small></p>
+            <p></p>
+            <a href="#" class="button agregar-carrito" data-id="5">Comprar</a>
+          </div>
+
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/saco.jpg') }}" class="card-img">
+            <p></p>
+            <h5>Saco BAD TOUR</h5>
+            <p>Material: Gabardina </p>
+            <p>$<small class="precio">1200</small></p>
+            <p></p>
+            <a href="#" class="button agregar-carrito" data-id="5">Comprar</a>
+          </div>
+
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/leotardo.jpg') }}" class="card-img">
+            <p></p>
+            <h5>Leotardo DANGEROUS TOUR</h5>
+            <p>Material: Licra Metalica </p>
+            <p>$<small class="precio">700</small></p>
+            <p></p>
+            <a href="#" class="button agregar-carrito" data-id="5">Comprar</a>
+          </div>
+
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/jam1992.jpg') }}" class="card-img">
+            <p></p>
+            <h5>Vestuario JAM 1992</h5>
+            <p>Material: Tergal Tornasol</p>
+            <p>$<small class="precio">1500</small></p>
+            <p></p>
+            <a href="#" class="button agregar-carrito" data-id="5">Comprar</a>
+          </div>
+
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/jam1993.jpg') }}" class="card-img">
+            <p></p>
+            <h5>Vestuario JAM 1993</h5>
+            <p>Material: Gabardina Y latón</p>
+            <p>$<small class="precio">3500</small></p>
+            <p></p>
+            <a href="#" class="button agregar-carrito" data-id="5">Comprar</a>
+          </div>
+
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/remember.jpg') }}" class="card-img">
+            <p></p>
+            <h5>Vestuario REMEMBER THE TIME</h5>
+            <p>Material: Licra Y latón </p>
+            <p>$<small class="precio">5000</small></p>
+            <p></p>
+            <a href="#" class="button agregar-carrito" data-id="5">Comprar</a>
+          </div>
+
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/capitan.jpg') }}" class="card-img">
+            <p></p>
+            <h5>Vestuario CAPTAIN EO</h5>
+            <p>Material: Leds y Royal Japones</p>
+            <p>$<small class="precio">15000</small></p>
+            <p></p>
+            <a href="#" class="button agregar-carrito" data-id="5">Comprar</a>
+          </div>
+
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/teaser.jpg') }}" class="card-img">
+            <p></p>
+            <h5>Vestuario HISTORY TEASER</h5>
+            <p>Material: Gabardina Japonesa</p>
+            <p>$<small class="precio">5000</small></p>
+            <p></p>
+            <a href="#" class="button agregar-carrito" data-id="5">Comprar</a>
+          </div>
+
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/eo.jpg') }}" class="card-img">
+            <p></p>
+            <h5>Chaqueta FREDDY MERCURY </h5>
+            <p>Material: Cuero Sintetico </p>
+            <p>$<small class="precio">650</small></p>
+            <p></p>
+            <a href="#" class="button agregar-carrito" data-id="5">Comprar</a>
+          </div>
+
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/gaga.jpg') }}" class="card-img">
+            <p></p>
+            <h5>Vestuario LADY GAGA </h5>
+            <p>Material: Tergal </p>
+            <p>$<small class="precio">600</small></p>
+            <p></p>
+            <a href="#" class="button agregar-carrito" data-id="5">Comprar</a>
+          </div>
+
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/playeras.jpg') }}" class="card-img">
+            <p></p>
+            <h5>Playera TECLAS </h5>
+            <p>Material: Lana </p>
+            <p>$<small class="precio">200</small></p>
+            <p></p>
+            <a href="#" class="button agregar-carrito" data-id="5">Comprar</a>
+          </div>
+
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/olodum.jpg') }}" class="card-img">
+            <p></p>
+            <h5>Playera OLODUM </h5>
+            <p>Material: Lana </p>
+            <p>$<small class="precio">200</small></p>
+            <p></p>
+            <a href="#" class="button agregar-carrito" data-id="5">Comprar</a>
+          </div>
+
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/interpol.jpg') }}" class="card-img">
+            <p></p>
+            <h5>Playera INTERPOL </h5>
+            <p>Material: Lana </p>
+            <p>$<small class="precio">200</small></p>
+            <p></p>
+            <a href="#" class="button agregar-carrito" data-id="5">Comprar</a>
+          </div>
+
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/guns.jpg') }}" class="card-img">
+            <p></p>
+            <h5>Playera GUNS N' ROSES </h5>
+            <p>Material: Lana </p>
+            <p>$<small class="precio">200</small></p>
+            <p></p>
+            <a href="#" class="button agregar-carrito" data-id="5">Comprar</a>
+          </div>
+
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/guns2.jpg') }}" class="card-img">
+            <p></p>
+            <h5>Playera GUNS N' ROSES </h5>
+            <p>Material: Lana </p>
+            <p>$<small class="precio">200</small></p>
+            <p></p>
+            <a href="#" class="button agregar-carrito" data-id="5">Comprar</a>
+          </div>
+
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/moon.jpg') }}" class="card-img">
+            <p></p>
+            <h5>CD DARKSIDE OF THE MOON </h5>
+            <p>Genero: Rock  </p>
+            <p>$<small class="precio">300</small></p>
+            <p></p>
+            <a href="#" class="button agregar-carrito" data-id="5">Comprar</a>
+          </div>
+
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/Sin título.jpg') }}" class="card-img">
+            <p></p>
+            <h5>CD THIRLLER</h5>
+            <p>Genero: Pop and Rb </p>
+            <p>$<small class="precio">150</small></p>
+            <p></p>
+            <a href="#" class="button agregar-carrito" data-id="5">Comprar</a>
+          </div>
+
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/zeppelin.jpg') }}" class="card-img">
+            <p></p>
+            <h5>CD LED ZEPPELIN IV</h5>
+            <p>Genero: Rock and Blues </p>
+            <p>$<small class="precio">150</small></p>
+            <p></p>
+            <a href="#" class="button agregar-carrito" data-id="5">Agregar al carrito</a>
+          </div>
+        </div>
+        {% endfor %}
+
+</main>
+  
+
+ 
+
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script  src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script  src="assets/js/scripts.js"></script>
+    <script src="assets/js/carrito.js"></script>
+    <script src="assets/js/pedido.js"></script>
+    <script src="assets/js/compra.js"></script>
+    <script src="assets/js/vista.js"></script>
+</body>
+</html>
+
+{% endblock %}
